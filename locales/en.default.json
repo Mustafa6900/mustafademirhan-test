@@ -360,8 +360,13 @@
       "default_title": "Collection",
       "no_filter_options": "No filter options configured",
       "filter_default_text": "Filter",
-      "name": "Sub-Collection Navigation",
       "filter_by": "FILTER BY:",
+      "filter_all": "All",
+      "filter_apply": "Apply filter",
+      "filter_clear": "Clear filter",
+      "filter_select": "Select filter",
+      "filter_all_categories": "All Categories",
+      "name": "Sub-Collection Navigation",
       "settings": {
         "header": {
           "content": "Sub-Collection Navigation Settings"
