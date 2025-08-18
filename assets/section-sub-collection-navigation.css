@@ -48,6 +48,15 @@
   width: 100%;
 }
 
+.sub-collection-navigation__item-wrapper {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.sub-collection-navigation__item-wrapper.scroll-trigger {
+  animation-delay: calc(var(--animation-order, 0) * 75ms);
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 749px) {
   .sub-collection-navigation__title {

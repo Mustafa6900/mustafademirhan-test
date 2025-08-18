@@ -21,39 +21,41 @@
     %}
 
     {% if section.settings.custom_title != blank %}
-      <h1 class="sub-collection-navigation__title">{{ section.settings.custom_title }}</h1>
+      <h1 class="sub-collection-navigation__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">{{ section.settings.custom_title }}</h1>
     {% elsif collection %}
-      <h1 class="sub-collection-navigation__title">{{ collection.title }}</h1>
+      <h1 class="sub-collection-navigation__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">{{ collection.title }}</h1>
     {% elsif page %}
-      <h1 class="sub-collection-navigation__title">{{ page.title }}</h1>
+      <h1 class="sub-collection-navigation__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">{{ page.title }}</h1>
     {% elsif page_title %}
-      <h1 class="sub-collection-navigation__title">{{ page_title }}</h1>
+      <h1 class="sub-collection-navigation__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">{{ page_title }}</h1>
     {% else %}
-      <h1 class="sub-collection-navigation__title">{{ 'sections.sub_collection_navigation.default_title' | t }}</h1>
+      <h1 class="sub-collection-navigation__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">{{ 'sections.sub_collection_navigation.default_title' | t }}</h1>
     {% endif %}
 
     {% if section.settings.sub_collections != blank %}
-      <div class="sub-collection-navigation__container">
+      <div class="sub-collection-navigation__container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <div class="sub-collection-navigation__scroll-container" id="sub-collection-scroll">
           <div class="sub-collection-navigation__items">
             {% for sub_collection in section.settings.sub_collections %}
-              {% render 'sub-collection-item',
-                item_url: sub_collection.url,
-                item_image: sub_collection.image,
-                item_title: sub_collection.title
-              %}
+              <div class="sub-collection-navigation__item-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--animation-order: {{ forloop.index }};">
+                {% render 'sub-collection-item',
+                  item_url: sub_collection.url,
+                  item_image: sub_collection.image,
+                  item_title: sub_collection.title
+                %}
+              </div>
             {% endfor %}
           </div>
         </div>
       </div>
 
-      <div class="sub-collection-navigation__filter-bar">
+      <div class="sub-collection-navigation__filter-bar{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {% render 'filter-dropdown' %}
         {% render 'navigation-controls' %}
       </div>
     {% else %}
       <!-- No sub-collections selected -->
-      <div class="sub-collection-navigation__empty">
+      <div class="sub-collection-navigation__empty{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <p>{{ 'sections.sub_collection_navigation.no_collections' | t }}</p>
       </div>
     {% endif %}
