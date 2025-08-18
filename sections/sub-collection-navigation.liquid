@@ -1,0 +1,144 @@
+{% comment %}
+  Sub-Collection Navigation Section
+  Displays a horizontally scrollable navigation bar for sub-collections
+  Uses metafields for dynamic content
+{% endcomment %}
+
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
+{{ 'component-sub-collection-item.css' | asset_url | stylesheet_tag }}
+{{ 'component-filter-dropdown.css' | asset_url | stylesheet_tag }}
+{{ 'component-navigation-controls.css' | asset_url | stylesheet_tag }}
+{{ 'section-sub-collection-navigation.css' | asset_url | stylesheet_tag }}
+
+<div class="sub-collection-navigation section-{{ section.id }}-padding">
+  <div class="page-width">
+    {% render 'breadcrumb-navigation', 
+      show_breadcrumb: section.settings.show_breadcrumb,
+      collection: collection,
+      page: page,
+      page_title: page_title,
+      template: template
+    %}
+
+    {% if section.settings.custom_title != blank %}
+      <h1 class="sub-collection-navigation__title">{{ section.settings.custom_title }}</h1>
+    {% elsif collection %}
+      <h1 class="sub-collection-navigation__title">{{ collection.title }}</h1>
+    {% elsif page %}
+      <h1 class="sub-collection-navigation__title">{{ page.title }}</h1>
+    {% elsif page_title %}
+      <h1 class="sub-collection-navigation__title">{{ page_title }}</h1>
+    {% else %}
+      <h1 class="sub-collection-navigation__title">{{ 'sections.sub_collection_navigation.default_title' | t }}</h1>
+    {% endif %}
+
+    {% if section.settings.sub_collections != blank %}
+      <div class="sub-collection-navigation__container">
+        <div class="sub-collection-navigation__scroll-container" id="sub-collection-scroll">
+          <div class="sub-collection-navigation__items">
+            {% for sub_collection in section.settings.sub_collections %}
+              {% render 'sub-collection-item',
+                item_url: sub_collection.url,
+                item_image: sub_collection.image,
+                item_title: sub_collection.title
+              %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-collection-navigation__filter-bar">
+        {% render 'filter-dropdown' %}
+        {% render 'navigation-controls' %}
+      </div>
+    {% else %}
+      <!-- No sub-collections selected -->
+      <div class="sub-collection-navigation__empty">
+        <p>{{ 'sections.sub_collection_navigation.no_collections' | t }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{{ 'sub-collection-navigation.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "t:sections.sub_collection_navigation.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.sub_collection_navigation.settings.header.content"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "t:sections.sub_collection_navigation.settings.custom_title.label",
+      "info": "t:sections.sub_collection_navigation.settings.custom_title.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "t:sections.sub_collection_navigation.settings.show_breadcrumb.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_arrows",
+      "label": "t:sections.sub_collection_navigation.settings.show_navigation_arrows.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filter",
+      "label": "t:sections.sub_collection_navigation.settings.show_filter.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "filter_default_text",
+      "label": "t:sections.sub_collection_navigation.settings.filter_default_text.label",
+      "info": "t:sections.sub_collection_navigation.settings.filter_default_text.info"
+    },
+    {
+      "type": "textarea",
+      "id": "filter_options",
+      "label": "t:sections.sub_collection_navigation.settings.filter_options.label",
+      "info": "t:sections.sub_collection_navigation.settings.filter_options.info"
+    },
+    {
+      "type": "collection_list",
+      "id": "sub_collections",
+      "label": "t:sections.sub_collection_navigation.settings.sub_collections.label",
+      "info": "t:sections.sub_collection_navigation.settings.sub_collections.info"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.sub_collection_navigation.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -8,6 +8,17 @@
         "color_scheme": "scheme-1"
       }
     },
+    "sub-collection-nav": {
+      "type": "sub-collection-navigation",
+      "settings": {
+        "show_breadcrumb": true,
+        "show_navigation_arrows": true,
+        "show_filter": true,
+        "sub_collections": [],
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -27,6 +38,7 @@
   },
   "order": [
     "banner",
+    "sub-collection-nav",
     "product-grid"
   ]
 }

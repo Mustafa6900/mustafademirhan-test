@@ -1,0 +1,30 @@
+{% comment %}
+  Sub-Collection Item Component
+  Displays individual sub-collection item with image and text
+{% endcomment %}
+
+<div class="sub-collection-navigation__item">
+  <a href="{{ item_url | default: '#' }}" class="sub-collection-navigation__link">
+    <div class="sub-collection-navigation__item-content">
+      <div class="sub-collection-navigation__image-wrapper">
+        {% if item_image %}
+          <img 
+            src="{{ item_image | image_url: width: 200 }}"
+            alt="{{ item_title }}"
+            loading="lazy"
+            width="200"
+            height="150"
+            class="sub-collection-navigation__image"
+          >
+        {% else %}
+          <div class="sub-collection-navigation__image placeholder-image">
+            <span>{{ 'sections.sub_collection_navigation.no_image' | t }}</span>
+          </div>
+        {% endif %}
+      </div>
+      <div class="sub-collection-navigation__text-wrapper">
+        <span class="sub-collection-navigation__label">{{ item_title }}</span>
+      </div>
+    </div>
+  </a>
+</div>

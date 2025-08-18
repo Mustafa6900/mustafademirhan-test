@@ -1,0 +1,35 @@
+{% comment %}
+  Breadcrumb Navigation Component
+  Displays breadcrumb navigation for sub-collections
+{% endcomment %}
+
+{% if show_breadcrumb %}
+  <nav class="breadcrumb" role="navigation" aria-label="{{ 'sections.header.breadcrumb' | t }}">
+    <ol class="breadcrumb__list">
+      <li class="breadcrumb__item">
+        <a href="{{ routes.root_url }}" class="breadcrumb__link">{{ 'sections.header.breadcrumb_home' | t }}</a>
+      </li>
+      
+      {% if collection %}
+        <li class="breadcrumb__item">
+          <a href="{{ routes.collections_url }}" class="breadcrumb__link">{{ 'sections.header.breadcrumb_collections' | t }}</a>
+        </li>
+        <li class="breadcrumb__item">
+          <span class="breadcrumb__current">{{ collection.title }}</span>
+        </li>
+      {% elsif page %}
+        <li class="breadcrumb__item">
+          <span class="breadcrumb__current">{{ page.title }}</span>
+        </li>
+      {% elsif page_title %}
+        <li class="breadcrumb__item">
+          <span class="breadcrumb__current">{{ page_title }}</span>
+        </li>
+      {% else %}
+        <li class="breadcrumb__item">
+          <span class="breadcrumb__current">{{ 'sections.sub_collection_navigation.default_title' | t }}</span>
+        </li>
+      {% endif %}
+    </ol>
+  </nav>
+{% endif %}

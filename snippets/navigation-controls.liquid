@@ -1,0 +1,25 @@
+{% comment %}
+  Navigation Controls Component
+  Displays navigation arrows for horizontal scrolling
+{% endcomment %}
+
+<div class="sub-collection-navigation__controls">
+  <button 
+    class="sub-collection-navigation__control-btn sub-collection-navigation__control-btn--prev" 
+    aria-label="{{ 'general.accessibility.previous' | t }}"
+    data-direction="left"
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button 
+    class="sub-collection-navigation__control-btn sub-collection-navigation__control-btn--next" 
+    aria-label="{{ 'general.accessibility.next' | t }}"
+    data-direction="right"
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>

@@ -1,0 +1,60 @@
+/* Navigation Controls Component Styles */
+
+.sub-collection-navigation__controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 90px;
+}
+
+.sub-collection-navigation__control-btn {
+  background: white;
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.sub-collection-navigation__control-btn:hover {
+  border-color: #ddd;
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+.sub-collection-navigation__control-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+.sub-collection-navigation__control-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.sub-collection-navigation__control-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 749px) {
+  .sub-collection-navigation__controls {
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sub-collection-navigation__controls {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .sub-collection-navigation__control-btn {
+    width: 36px;
+    height: 36px;
+  }
+}

@@ -66,6 +66,8 @@
     "skip_to_text": "Skip to content",
     "skip_to_product_info": "Skip to product information",
     "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
     "unit_price_separator": "per",
     "vendor": "Vendor:",
     "error": "Error",
@@ -274,10 +276,12 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
+      "breadcrumb": "Breadcrumb navigation",
+      "breadcrumb_home": "HOME",
+      "breadcrumb_collections": "COLLECTIONS",
       "cart_count": {
         "one": "{{ count }} item",
         "other": "{{ count }} items"
@@ -364,17 +368,59 @@
       "items_removed": {
         "one": "{{ quantity }} item removed",
         "other": "{{ quantity }} items removed"
+      }
+    },
+    "sub_collection_navigation": {
+      "no_collections": "No sub-collections available",
+      "no_image": "No image available",
+      "default_title": "Collection",
+      "no_filter_options": "No filter options configured",
+      "filter_default_text": "Filter",
+      "name": "Sub-Collection Navigation",
+      "filter_by": "FILTER BY:",
+      "settings": {
+        "header": {
+          "content": "Sub-Collection Navigation Settings"
+        },
+        "show_breadcrumb": {
+          "label": "Show breadcrumb navigation"
+        },
+        "show_navigation_arrows": {
+          "label": "Show navigation arrows"
+        },
+        "show_filter": {
+          "label": "Show filter section"
+        },
+        "custom_title": {
+          "label": "Custom title",
+          "info": "Override the default title. Leave empty to use collection or page title."
+        },
+        "filter_default_text": {
+          "label": "Filter default text",
+          "info": "Default text shown in the filter dropdown button"
+        },
+        "filter_options": {
+          "label": "Filter options",
+          "info": "Comma-separated list of filter options. Format: value:display_text (e.g., products:Products, seat-covers:Seat Covers)"
+        },
+        "sub_collections": {
+          "label": "Sub-collections",
+          "info": "Select sub-collections to display in the navigation"
+        }
       },
-      "product_variants": "Product variants",
-      "total_items": "Total items",
-      "remove_all_single_item_confirmation": "Remove 1 item from your cart?",
-      "remove_all_items_confirmation": "Remove all {{ quantity }} items from your cart?",
-      "remove_all": "Remove all",
-      "cancel": "Cancel",
-      "min_error": "This item has a minimum of {{ min }}",
-      "max_error": "This item has a maximum of {{ max }}",
-      "step_error": "You can only add this item in increments of {{ step }}"
-    }
+      "presets": {
+        "name": "Sub-Collection Navigation"
+      }
+    },
+    "product_variants": "Product variants",
+    "total_items": "Total items",
+    "remove_all_single_item_confirmation": "Remove 1 item from your cart?",
+    "remove_all_items_confirmation": "Remove all {{ quantity }} items from your cart?",
+    "remove_all": "Remove all",
+    "cancel": "Cancel",
+    "min_error": "This item has a minimum of {{ min }}",
+    "max_error": "This item has a maximum of {{ max }}",
+    "step_error": "You can only add this item in increments of {{ step }}"
   },
   "localization": {
     "country_label": "Country/region",

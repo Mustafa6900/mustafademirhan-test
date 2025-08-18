@@ -1,0 +1,33 @@
+{% comment %}
+  Filter Dropdown Component
+  Displays filter dropdown for sub-collections
+{% endcomment %}
+
+{% assign dropdown_id = 'category-dropdown-' | append: section.id | default: 'default' %}
+
+<div class="sub-collection-navigation__dropdown-wrapper">
+  <button class="sub-collection-navigation__dropdown-btn" id="{{ dropdown_id }}-btn" aria-expanded="false">
+    <span class="sub-collection-navigation__dropdown-text">{{ section.settings.filter_default_text | default: 'sections.sub_collection_navigation.filter_default_text' | t }}</span>
+    <svg class="sub-collection-navigation__dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+      <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="sub-collection-navigation__dropdown-menu" id="{{ dropdown_id }}-menu">
+    {% if section.settings.filter_options != blank %}
+      {% assign filter_options = section.settings.filter_options | split: ',' %}
+      {% for option in filter_options %}
+        {% assign option_parts = option | split: ':' %}
+        {% assign option_value = option_parts[0] | strip %}
+        {% assign option_text = option_parts[1] | strip | default: option_value %}
+        <button class="sub-collection-navigation__dropdown-item{% if forloop.first %} active{% endif %}" data-value="{{ option_value }}">
+          {{ option_text }}
+        </button>
+      {% endfor %}
+    {% else %}
+      <!-- No filter options configured, show empty state -->
+      <div class="sub-collection-navigation__dropdown-empty">
+        <p>{{ 'sections.sub_collection_navigation.no_filter_options' | t }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
