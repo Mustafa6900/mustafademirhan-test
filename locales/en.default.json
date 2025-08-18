@@ -354,22 +354,6 @@
     "page": {
       "title": "Page title"
     },
-    "quick_order_list": {
-      "product_total": "Product subtotal",
-      "view_cart": "View cart",
-      "each": "{{ money }}/ea",
-      "product": "Product",
-      "variant": "Variant",
-      "variant_total": "Variant total",
-      "items_added": {
-        "one": "{{ quantity }} item added",
-        "other": "{{ quantity }} items added"
-      },
-      "items_removed": {
-        "one": "{{ quantity }} item removed",
-        "other": "{{ quantity }} items removed"
-      }
-    },
     "sub_collection_navigation": {
       "no_collections": "No sub-collections available",
       "no_image": "No image available",
@@ -410,6 +394,22 @@
       },
       "presets": {
         "name": "Sub-Collection Navigation"
+      }
+    },
+    "quick_order_list": {
+      "product_total": "Product subtotal",
+      "view_cart": "View cart",
+      "each": "{{ money }}/ea",
+      "product": "Product",
+      "variant": "Variant",
+      "variant_total": "Variant total",
+      "items_added": {
+        "one": "{{ quantity }} item added",
+        "other": "{{ quantity }} items added"
+      },
+      "items_removed": {
+        "one": "{{ quantity }} item removed",
+        "other": "{{ quantity }} items removed"
       }
     },
     "product_variants": "Product variants",
