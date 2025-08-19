@@ -1,11 +1,7 @@
 /* Sub-Collection Item Component Styles */
 
 .sub-collection-navigation__item {
-  flex-shrink: 0;
-  width: calc(50% - 12px); /* 2 items per row with gap */
-  min-width: 280px;
-  max-width: 400px;
-  scroll-snap-align: start;
+  width: 300px;
 }
 
 .sub-collection-navigation__link {
@@ -14,6 +10,7 @@
   color: inherit;
   transition: all 0.3s ease;
   height: 100%;
+  width: fit-content
 }
 
 .sub-collection-navigation__link:hover {
@@ -35,9 +32,10 @@
 
 .sub-collection-navigation__image-wrapper {
   flex-shrink: 0;
-  width: 180px;
-  height: 150px;
+  width: 220px;
+  height: 220px;
   overflow: hidden;
+  border: 1px solid #ddd;
 }
 
 .sub-collection-navigation__image {
@@ -45,6 +43,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  padding: 0.05rem;
 }
 
 .placeholder-image {
@@ -80,13 +79,13 @@
 }
 
 .sub-collection-navigation__link:focus .sub-collection-navigation__label {
-  color: #0056b3;
+  text-decoration: underline;
 }
 
 /* Responsive Styles */
 @media screen and (max-width: 749px) {
   .sub-collection-navigation__item {
-    width: calc(50% - 12px); /* 2 items per row with gap */
+    width: calc(50% - 12px);
     min-width: 180px;
     max-width: 250px;
     scroll-snap-align: start;
@@ -95,7 +94,7 @@
   .sub-collection-navigation__item-content {
     padding: 0;
     gap: 0;
-    flex-direction: column; /* Column layout like featured products */
+    flex-direction: column;
     align-items: center;
     text-align: center;
     height: auto;
@@ -132,7 +131,7 @@
     color: #333;
     margin: 0;
     text-align: center;
-    white-space: nowrap; /* Keep text on single line */
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -140,15 +139,15 @@
 
 @media screen and (max-width: 480px) {
   .sub-collection-navigation__item {
-    width: calc(50% - 8px); /* 2 items per row with smaller gap */
-    min-width: 150px;
-    max-width: 200px;
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
     scroll-snap-align: start;
   }
 
   .sub-collection-navigation__item-content {
     gap: 10px;
-    flex-direction: column; /* Column layout like featured products */
+    flex-direction: column;
     align-items: center;
     text-align: center;
     height: auto;
@@ -185,7 +184,7 @@
     color: #333;
     margin: 0;
     text-align: center;
-    white-space: nowrap; /* Keep text on single line */
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }

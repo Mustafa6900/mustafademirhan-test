@@ -7,7 +7,13 @@
 
 <div class="sub-collection-navigation__dropdown-wrapper">
   <button class="sub-collection-navigation__dropdown-btn" id="{{ dropdown_id }}-btn" aria-expanded="false">
-    <span class="sub-collection-navigation__dropdown-text">{{ section.settings.filter_default_text | default: 'sections.sub_collection_navigation.filter_default_text' | t }}</span>
+    <span class="sub-collection-navigation__dropdown-text">
+      {% if section.settings.filter_default_text != blank %}
+        {{ section.settings.filter_default_text }}
+      {% else %}
+        {{ 'sections.sub_collection_navigation.filter_default_text' | t }}
+      {% endif %}
+    </span>
     <svg class="sub-collection-navigation__dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
       <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>

@@ -392,6 +392,21 @@
           "label": "Filter options",
           "info": "Comma-separated list of filter options. Format: value:display_text (e.g., products:Products, seat-covers:Seat Covers)"
         },
+        "show_navigation": {
+          "label": "Show navigation section"
+        },
+        "navigation_spacing": {
+          "label": "Navigation spacing",
+          "info": "Spacing between the navigation section and the content"
+        },
+        "section_padding_top": {
+          "label": "Section padding top",
+          "info": "Padding top of the section"
+        },
+        "section_padding_bottom": {
+          "label": "Section padding bottom",
+          "info": "Padding bottom of the section"
+        },
         "sub_collections": {
           "label": "Sub-collections",
           "info": "Select sub-collections to display in the navigation"
