@@ -3464,6 +3464,84 @@
         },
         "padding_bottom": {
           "label": "Section padding bottom"
+        },
+        "typography_header": {
+          "content": "Typography Settings"
+        },
+        "title_font_size": {
+          "label": "Title font size"
+        },
+        "title_font_weight": {
+          "label": "Title font weight"
+        },
+        "subtitle_font_size": {
+          "label": "Subtitle font size"
+        },
+        "subtitle_font_weight": {
+          "label": "Subtitle font weight"
+        },
+        "question_font_size": {
+          "label": "Question font size"
+        },
+        "question_font_weight": {
+          "label": "Question font weight"
+        },
+        "answer_font_size": {
+          "label": "Answer font size"
+        },
+        "answer_font_weight": {
+          "label": "Answer font weight"
+        },
+        "colors_header": {
+          "content": "Color Settings"
+        },
+        "title_color": {
+          "label": "Title color"
+        },
+        "subtitle_color": {
+          "label": "Subtitle color"
+        },
+        "question_color": {
+          "label": "Question color"
+        },
+        "answer_color": {
+          "label": "Answer color"
+        },
+        "question_hover_bg": {
+          "label": "Question hover background"
+        },
+        "icon_bg_color": {
+          "label": "Icon background color"
+        },
+        "icon_color": {
+          "label": "Icon color"
+        },
+        "styling_header": {
+          "content": "Styling Settings"
+        },
+        "border_radius": {
+          "label": "Border radius"
+        },
+        "box_shadow_blur": {
+          "label": "Box shadow blur"
+        },
+        "box_shadow_spread": {
+          "label": "Box shadow spread"
+        },
+        "box_shadow_opacity": {
+          "label": "Box shadow opacity"
+        },
+        "question_padding": {
+          "label": "Question padding"
+        },
+        "answer_padding": {
+          "label": "Answer padding"
+        },
+        "icon_size": {
+          "label": "Icon size"
+        },
+        "container_max_width": {
+          "label": "Container max width"
         }
       },
       "presets": {

@@ -17,12 +17,15 @@ class FAQSection {
     
     questionButtons.forEach(button => {
       button.addEventListener('click', (e) => {
-        this.toggleFAQ(e.target.closest('.faq-item'));
+        e.preventDefault();
+        const faqItem = e.currentTarget.closest('.faq-item');
+        this.toggleFAQ(faqItem);
       });
       button.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          this.toggleFAQ(e.target.closest('.faq-item'));
+          const faqItem = e.currentTarget.closest('.faq-item');
+          this.toggleFAQ(faqItem);
         }
       });
     });
@@ -34,9 +37,9 @@ class FAQSection {
     const questionButton = faqItem.querySelector('.faq-item__question');
     const answer = faqItem.querySelector('.faq-item__answer');
     const isExpanded = questionButton.getAttribute('aria-expanded') === 'true';
-    this.closeAllFAQs();
 
     if (!isExpanded) {
+      this.closeAllFAQs();
       this.openFAQ(questionButton, answer);
     } else {
       this.closeFAQ(questionButton, answer);
