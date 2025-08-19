@@ -3413,6 +3413,9 @@
         "show_navigation_arrows": {
           "label": "Show navigation arrows"
         },
+        "show_navigation": {
+          "label": "Show navigation section"
+        },
         "show_filter": {
           "label": "Show filter section"
         },
@@ -3427,6 +3430,15 @@
         "sub_collections": {
           "label": "Sub-collections",
           "info": "Select sub-collections to display in the navigation"
+        },
+        "navigation_spacing": {
+          "label": "Navigation spacing"
+        },
+        "section_padding_top": {
+          "label": "Section padding top"
+        },
+        "section_padding_bottom": {
+          "label": "Section padding bottom"
         }
       },
       "presets": {
