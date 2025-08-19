@@ -1,0 +1,201 @@
+/* Related Blog Posts Component Styles */
+
+.related-blog-posts {
+  padding: var(--spacing-unit) 0;
+}
+
+.related-blog-posts.section-padding {
+  padding-top: var(--section-padding-top, 60px);
+  padding-bottom: var(--section-padding-bottom, 60px);
+}
+
+.related-blog-posts__title {
+  font-size: var(--title-font-size, 2.5rem);
+  font-weight: var(--title-font-weight, 700);
+  margin: 0 0 8px 0;
+  color: var(--title-color, #333);
+  text-align: center;
+}
+
+.related-blog-posts__subtitle {
+  font-size: var(--subtitle-font-size, 1.6rem);
+  font-weight: var(--subtitle-font-weight, 400);
+  margin: 0 0 40px 0;
+  color: var(--subtitle-color, #666);
+  text-align: center;
+}
+
+.related-blog-posts__container {
+  margin-top: 40px;
+}
+
+.related-blog-posts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.related-blog-post {
+  background: white;
+  overflow: hidden;
+  border-radius: var(--border-radius, 12px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.related-blog-post-card {
+  padding: var(--card-padding, 0);
+  background: white;
+  border-radius: var(--border-radius, 12px);
+  box-shadow: 0 4px var(--box-shadow-blur) var(--box-shadow-spread) rgba(0, 0, 0, var(--box-shadow-opacity));
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.related-blog-post__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.related-blog-post__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.related-blog-post:hover .related-blog-post__image,
+.related-blog-post-card:hover .related-blog-post__image {
+  transform: scale(1.05);
+}
+
+.related-blog-post__image.placeholder-image {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.related-blog-post__content {
+  padding: var(--content-padding, 24px) 0 var(--content-padding, 24px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.related-blog-post__title {
+  margin: 0 0 16px 0;
+  font-size: var(--post-title-font-size, 1.8rem);
+  font-weight: var(--post-title-font-weight, 700);
+  line-height: 1.3;
+  color: var(--post-title-color, #333);
+}
+
+.related-blog-post__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.related-blog-post__link:hover {
+  text-decoration: underline;
+}
+
+.related-blog-post__excerpt {
+  margin: 0 0 16px 0;
+  font-size: var(--excerpt-font-size, 1.5rem);
+  font-weight: var(--excerpt-font-weight, 400);
+  line-height: 1.6;
+  color: var(--excerpt-color, #666);
+  flex-grow: 1;
+}
+
+.related-blog-post__read-more {
+  color: var(--read-more-color, #333);
+  text-decoration: underline;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.related-blog-post__read-more:hover {
+  text-decoration-thickness: 2px;
+}
+
+.related-blog-posts__empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: #666;
+  font-size: 1.6rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 749px) {
+  .related-blog-posts__title {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+
+  .related-blog-posts__subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 32px;
+  }
+
+  .related-blog-posts__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .related-blog-post__content {
+    padding: 20px;
+  }
+
+  .related-blog-post__title {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+
+  .related-blog-post__excerpt {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .related-blog-posts__title {
+    font-size: 1.8rem;
+  }
+
+  .related-blog-posts__subtitle {
+    font-size: 1.3rem;
+  }
+
+  .related-blog-posts__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .related-blog-post__content {
+    padding: 16px 0 16px;
+  }
+
+  .related-blog-post__title {
+    font-size: 1.5rem;
+  }
+
+  .related-blog-post__excerpt {
+    font-size: 1.3rem;
+  }
+}

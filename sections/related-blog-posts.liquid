@@ -1,0 +1,362 @@
+{% comment %}
+  Related Blog Posts Section
+  Displays related blog posts for collection pages
+  Uses collection metafields for dynamic content
+{% endcomment %}
+
+{{ 'component-related-blog-posts.css' | asset_url | stylesheet_tag }}
+
+<div class="related-blog-posts section-padding" style="
+  --section-padding-top: {{ section.settings.padding_top }}px; 
+  --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  --title-color: {{ section.settings.title_color }};
+  --subtitle-color: {{ section.settings.subtitle_color }};
+  --post-title-color: {{ section.settings.post_title_color }};
+  --excerpt-color: {{ section.settings.excerpt_color }};
+  --read-more-color: {{ section.settings.read_more_color }};
+  --title-font-size: {{ section.settings.title_font_size }}px;
+  --title-font-weight: {{ section.settings.title_font_weight }};
+  --subtitle-font-size: {{ section.settings.subtitle_font_size }}px;
+  --subtitle-font-weight: {{ section.settings.subtitle_font_weight }};
+  --post-title-font-size: {{ section.settings.post_title_font_size }}px;
+  --post-title-font-weight: {{ section.settings.post_title_font_weight }};
+  --excerpt-font-size: {{ section.settings.excerpt_font_size }}px;
+  --excerpt-font-weight: {{ section.settings.excerpt_font_weight }};
+  --content-padding: {{ section.settings.content_padding }}px;
+  --card-padding: {{ section.settings.card_padding }}px;
+">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="related-blog-posts__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.title }}
+      </h2>
+      {% if section.settings.subtitle != blank %}
+        <p class="related-blog-posts__subtitle{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+    {% endif %}
+
+    {% if collection.metafields.custom.related_blog_posts != blank %}
+      <div class="related-blog-posts__container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="related-blog-posts__grid">
+          {% assign blog_posts = collection.metafields.custom.related_blog_posts.value %}
+          {% for blog_post in blog_posts %}
+            <article class="related-blog-post{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--animation-order: {{ forloop.index }};">
+            <div class="related-blog-post-card">
+              <div class="related-blog-post__image-wrapper">
+                {% if blog_post.featured_image %}
+                  <img 
+                    src="{{ blog_post.featured_image | image_url: width: 400 }}"
+                    alt="{{ blog_post.title }}"
+                    loading="lazy"
+                    width="400"
+                    height="250"
+                    class="related-blog-post__image"
+                  >
+                {% else %}
+                  <div class="related-blog-post__image placeholder-image">
+                    <span>{{ 'sections.related_blog_posts.no_image' | t }}</span>
+                  </div>
+                {% endif %}
+              </div>
+              
+              <div class="related-blog-post__content">
+                <h3 class="related-blog-post__title">
+                  <a href="{{ blog_post.url | default: '#' }}" class="related-blog-post__link">
+                    {{ blog_post.title }}
+                  </a>
+                </h3>
+                
+                {% if blog_post.excerpt != blank %}
+                  <p class="related-blog-post__excerpt">
+                    {{ blog_post.excerpt | strip_html | truncate: 120 }}
+                  </p>
+                {% endif %}
+                
+                <a href="{{ blog_post.url | default: '#' }}" class="related-blog-post__read-more">
+                  {{ 'sections.related_blog_posts.read_article' | t }}
+                </a>
+              </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <!-- No related blog posts configured for this collection -->
+      <div class="related-blog-posts__empty{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <p>{{ 'sections.related_blog_posts.no_blog_posts' | t }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.related_blog_posts.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.related_blog_posts.settings.header.content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.related_blog_posts.settings.title.label",
+      "default": "Related Blog Posts"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:sections.related_blog_posts.settings.subtitle.label",
+      "default": "Learn more about our products and tips"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.related_blog_posts.settings.colors_header.content"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "t:sections.related_blog_posts.settings.title_color.label",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "t:sections.related_blog_posts.settings.subtitle_color.label",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "post_title_color",
+      "label": "t:sections.related_blog_posts.settings.post_title_color.label",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "excerpt_color",
+      "label": "t:sections.related_blog_posts.settings.excerpt_color.label",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "read_more_color",
+      "label": "t:sections.related_blog_posts.settings.read_more_color.label",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.related_blog_posts.settings.typography_header.content"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.title_font_size.label",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "t:sections.related_blog_posts.settings.title_font_weight.label",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.subtitle_font_size.label",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "subtitle_font_weight",
+      "label": "t:sections.related_blog_posts.settings.subtitle_font_weight.label",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "post_title_font_size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.post_title_font_size.label",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "post_title_font_weight",
+      "label": "t:sections.related_blog_posts.settings.post_title_font_weight.label",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "excerpt_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.excerpt_font_size.label",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "excerpt_font_weight",
+      "label": "t:sections.related_blog_posts.settings.excerpt_font_weight.label",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.related_blog_posts.settings.styling_header.content"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "min": 0,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.content_padding.label",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 0,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.card_padding.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.related_blog_posts.settings.layout_header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.padding_top.label",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.related_blog_posts.settings.padding_bottom.label",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.related_blog_posts.presets.name"
+    }
+  ]
+}
+{% endschema %}

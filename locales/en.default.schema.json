@@ -3489,6 +3489,88 @@
       "presets": {
         "name": "Collection Breadcrumb"
       }
+    },
+    "related_blog_posts": {
+      "name": "Related Blog Posts",
+      "settings": {
+        "header": {
+          "content": "Related Blog Posts Settings"
+        },
+        "colors_header": {
+          "content": "Color Settings"
+        },
+        "layout_header": {
+          "content": "Layout Settings"
+        },
+        "title": {
+          "label": "Section title",
+          "info": "Title displayed above the blog posts section"
+        },
+        "subtitle": {
+          "label": "Section subtitle",
+          "info": "Subtitle displayed below the main title"
+        },
+        "title_color": {
+          "label": "Title color"
+        },
+        "subtitle_color": {
+          "label": "Subtitle color"
+        },
+        "post_title_color": {
+          "label": "Post title color"
+        },
+        "excerpt_color": {
+          "label": "Excerpt text color"
+        },
+        "read_more_color": {
+          "label": "Read more link color"
+        },
+        "typography_header": {
+          "content": "Typography Settings"
+        },
+        "styling_header": {
+          "content": "Styling Settings"
+        },
+        "title_font_size": {
+          "label": "Title font size"
+        },
+        "title_font_weight": {
+          "label": "Title font weight"
+        },
+        "subtitle_font_size": {
+          "label": "Subtitle font size"
+        },
+        "subtitle_font_weight": {
+          "label": "Subtitle font weight"
+        },
+        "post_title_font_size": {
+          "label": "Post title font size"
+        },
+        "post_title_font_weight": {
+          "label": "Post title font weight"
+        },
+        "excerpt_font_size": {
+          "label": "Excerpt font size"
+        },
+        "excerpt_font_weight": {
+          "label": "Excerpt font weight"
+        },
+        "content_padding": {
+          "label": "Content padding"
+        },
+        "card_padding": {
+          "label": "Card padding"
+        },
+        "padding_top": {
+          "label": "Section padding top"
+        },
+        "padding_bottom": {
+          "label": "Section padding bottom"
+        }
+      },
+      "presets": {
+        "name": "Related Blog Posts"
+      }
     }
   }
 }

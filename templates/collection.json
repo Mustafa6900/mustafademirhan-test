@@ -32,6 +32,15 @@
         "padding_bottom": 36
       }
     },
+    "related_blog_posts": {
+      "type": "related-blog-posts",
+      "settings": {
+        "title": "Related Blog Posts",
+        "subtitle": "Learn more about our products and tips",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "faq_section": {
       "type": "faq-section",
       "settings": {
@@ -46,6 +55,7 @@
     "breadcrumb",
     "banner",
     "product-grid",
+    "related_blog_posts",
     "faq_section"
   ]
 }
