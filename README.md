@@ -1,14 +1,14 @@
 Shopify Demo Theme - Technical Assessment
 A comprehensive Shopify theme developed for technical assessment, featuring dynamic content management and highly customizable components for modern e-commerce experiences.
 
-#Dekstop:
+## Dekstop:
 
 <img width="3839" height="1785" alt="image" src="https://github.com/user-attachments/assets/9ac638fb-ceb4-4893-83a2-914d0e646cf0" />
 <img width="3839" height="1781" alt="image" src="https://github.com/user-attachments/assets/6478353b-f4fb-4e12-aa60-9930b74dba0c" />
 <img width="3839" height="1775" alt="image" src="https://github.com/user-attachments/assets/ee98c1b9-8744-4310-a1d7-03d0b0231687" />
 <img width="3839" height="1776" alt="image" src="https://github.com/user-attachments/assets/764ca80e-4dd4-4d65-b931-2feb3ad06ca8" />
 
-#Mobile
+## Mobile
 <img width="753" height="811" alt="image" src="https://github.com/user-attachments/assets/49d955d8-0f5e-4b9c-a067-6a694f6aeec9" />
 <img width="755" height="205" alt="image" src="https://github.com/user-attachments/assets/ff2da61b-ae22-40cd-b7c2-6dcd73ac32b2" />
 <img width="736" height="1640" alt="image" src="https://github.com/user-attachments/assets/74ce425f-5390-4f05-bb5d-07f2bced4e9b" />
