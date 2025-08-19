@@ -446,7 +446,7 @@
       "name": "Collection Breadcrumb",
       "settings": {
         "header": {
-          "content": "Breadcrumb Settings"
+          "content": "Layout Settings"
         },
         "show_breadcrumb": {
           "label": "Show breadcrumb navigation"
@@ -456,6 +456,18 @@
         },
         "padding_bottom": {
           "label": "Section padding bottom"
+        },
+        "typography_header": {
+          "content": "Typography Settings"
+        },
+        "font_size": {
+          "label": "Font size"
+        },
+        "font_weight": {
+          "label": "Font weight"
+        },
+        "current_font_weight": {
+          "label": "Current page font weight"
         }
       },
       "presets": {

@@ -14,7 +14,8 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 1.4rem;
+  font-size: var(--breadcrumb-font-size, 1.4rem);
+  font-weight: var(--breadcrumb-font-weight, 400);
 }
 
 .breadcrumb__item:not(:last-child)::after {
@@ -42,5 +43,5 @@
 
 .breadcrumb__current {
   color: #333;
-  font-weight: 600;
+  font-weight: var(--breadcrumb-current-font-weight, 600);
 }
