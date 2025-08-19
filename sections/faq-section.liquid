@@ -1,0 +1,106 @@
+{% comment %}
+  FAQ Section Component
+  Displays FAQ items in accordion format for collection pages
+  Uses collection metafields for dynamic content
+{% endcomment %}
+
+{{ 'component-faq.css' | asset_url | stylesheet_tag }}
+
+<div class="faq-section section-padding" style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="faq-section__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.title }}
+      </h2>
+      {% if section.settings.subtitle != blank %}
+        <p class="faq-section__subtitle{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+    {% endif %}
+
+        {% if collection.metafields.custom.faq_items != blank %}
+      <div class="faq-section__container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {% assign faq_items = collection.metafields.custom.faq_items.value %}
+        {% for faq_item in faq_items %}
+          <div class="faq-item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--animation-order: {{ forloop.index }};">
+            <button class="faq-item__question" aria-expanded="false" aria-controls="faq-answer-{{ forloop.index }}">
+              <span class="faq-item__question-text">{{ faq_item.question }}</span>
+              <div class="faq-item__icon-wrapper">
+                <svg class="faq-item__icon faq-item__icon--plus" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg class="faq-item__icon faq-item__icon--minus" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-item__answer" id="faq-answer-{{ forloop.index }}">
+              <div class="faq-item__answer-content">
+                {{ faq_item.answer }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <!-- No FAQ items configured for this collection -->
+      <div class="faq-section__empty{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <p>{{ 'sections.faq_section.no_faq_items' | t }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{{ 'faq-section.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "t:sections.faq_section.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.faq_section.settings.header.content"
+    },
+         {
+       "type": "text",
+       "id": "title",
+       "label": "t:sections.faq_section.settings.title.label",
+       "default": "FAQs"
+     },
+     {
+       "type": "text",
+       "id": "subtitle",
+       "label": "t:sections.faq_section.settings.subtitle.label",
+       "default": "We're Here to Help!"
+     },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.faq_section.settings.padding_top.label",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.faq_section.settings.padding_bottom.label",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.faq_section.presets.name"
+    }
+  ]
+}
+{% endschema %}

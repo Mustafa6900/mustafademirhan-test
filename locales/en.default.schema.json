@@ -3444,6 +3444,31 @@
       "presets": {
         "name": "Sub-Collection Navigation"
       }
+    },
+    "faq_section": {
+      "name": "FAQ Section",
+      "settings": {
+        "header": {
+          "content": "FAQ Section Settings"
+        },
+        "title": {
+          "label": "Section title",
+          "info": "Title displayed above the FAQ section"
+        },
+        "subtitle": {
+          "label": "Section subtitle",
+          "info": "Subtitle displayed below the main title"
+        },
+        "padding_top": {
+          "label": "Section padding top"
+        },
+        "padding_bottom": {
+          "label": "Section padding bottom"
+        }
+      },
+      "presets": {
+        "name": "FAQ Section"
+      }
     }
   }
 }
