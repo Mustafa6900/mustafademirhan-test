@@ -11,10 +11,10 @@
 }
 
 .sub-collection-navigation__title {
-  font-size: 2.187rem;
-  font-weight: 700;
+  font-size: var(--title-font-size, 2.187rem);
+  font-weight: var(--title-font-weight, 700);
   margin: 0 0 24px 0;
-  color: #333;
+  color: var(--title-color, #333);
   text-align: left;
 }
 
@@ -49,7 +49,7 @@
 
 .sub-collection-navigation__items {
   display: flex;
-  gap: 24px;
+  gap: var(--item-gap, 24px);
   min-width: max-content;
   width: 100%;
 }
@@ -81,7 +81,7 @@
   }
 
   .sub-collection-navigation__items {
-    gap: 16px;
+    gap: calc(var(--item-gap, 24px) * 0.67);
     display: flex;
     min-width: max-content;
     width: 100%;
@@ -106,7 +106,7 @@
   }
 
   .sub-collection-navigation__items {
-    gap: 12px;
+    gap: calc(var(--item-gap, 24px) * 0.5);
     display: flex;
     min-width: max-content;
     width: 100%;

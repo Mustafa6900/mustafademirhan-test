@@ -1,7 +1,7 @@
 /* Sub-Collection Item Component Styles */
 
 .sub-collection-navigation__item {
-  width: 300px;
+  width: var(--item-width, 300px);
 }
 
 .sub-collection-navigation__link {
@@ -14,12 +14,13 @@
 }
 
 .sub-collection-navigation__link:hover {
-  transform: translateY(-2px);
+  transform: var(--hover-transform, translateY(-2px));
+  text-decoration: underline;
 }
 
 .sub-collection-navigation__link:focus {
   outline: none;
-  transform: translateY(-2px);
+  transform: var(--hover-transform, translateY(-2px));
 }
 
 .sub-collection-navigation__item-content {
@@ -32,10 +33,12 @@
 
 .sub-collection-navigation__image-wrapper {
   flex-shrink: 0;
-  width: 220px;
-  height: 220px;
+  width: var(--image-width, 220px);
+  height: var(--image-height, 220px);
   overflow: hidden;
   border: 1px solid #ddd;
+  border-radius: var(--border-radius, 0);
+  box-shadow: 0 2px var(--box-shadow-blur, 0px) var(--box-shadow-spread, 0px) rgba(0, 0, 0, var(--box-shadow-opacity, 0));
 }
 
 .sub-collection-navigation__image {
@@ -69,10 +72,10 @@
 .sub-collection-navigation__label {
   display: block;
   text-align: center;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: var(--label-font-weight, 600);
+  font-size: var(--label-font-size, 1.1rem);
   line-height: 1.3;
-  color: #333;
+  color: var(--label-color, #333);
   transition: color 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -108,6 +111,7 @@
     height: 120px;
     flex-shrink: 0;
     border: none;
+    border-radius: var(--border-radius, 0);
   }
 
   .sub-collection-navigation__image-wrapper .placeholder-image {
@@ -125,10 +129,10 @@
   }
 
   .sub-collection-navigation__label {
-    font-size: 1rem;
+    font-size: calc(var(--label-font-size, 18px) * 0.89);
     line-height: 1.3;
-    font-weight: 600;
-    color: #333;
+    font-weight: var(--label-font-weight, 600);
+    color: var(--label-color, #333);
     margin: 0;
     text-align: center;
     white-space: nowrap;
@@ -161,6 +165,7 @@
     height: 170px;
     flex-shrink: 0;
     border: none;
+    border-radius: var(--border-radius, 0);
   }
 
   .sub-collection-navigation__image-wrapper .placeholder-image {
@@ -178,10 +183,10 @@
   }
 
   .sub-collection-navigation__label {
-    font-size: 0.9rem;
+    font-size: calc(var(--label-font-size, 18px) * 0.8);
     line-height: 1.2;
-    font-weight: 600;
-    color: #333;
+    font-weight: var(--label-font-weight, 600);
+    color: var(--label-color, #333);
     margin: 0;
     text-align: center;
     white-space: nowrap;

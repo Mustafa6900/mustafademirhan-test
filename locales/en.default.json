@@ -407,6 +407,69 @@
           "label": "Section padding bottom",
           "info": "Padding bottom of the section"
         },
+        "typography_header": {
+          "content": "Typography Settings"
+        },
+        "title_font_size": {
+          "label": "Title font size"
+        },
+        "title_font_weight": {
+          "label": "Title font weight"
+        },
+        "title_color": {
+          "label": "Title color"
+        },
+        "layout_header": {
+          "content": "Layout Settings"
+        },
+        "item_width": {
+          "label": "Item width"
+        },
+        "item_gap": {
+          "label": "Item gap"
+        },
+        "image_width": {
+          "label": "Image width"
+        },
+        "image_height": {
+          "label": "Image height"
+        },
+        "item_typography_header": {
+          "content": "Item Typography Settings"
+        },
+        "label_font_size": {
+          "label": "Label font size"
+        },
+        "label_font_weight": {
+          "label": "Label font weight"
+        },
+        "label_color": {
+          "label": "Label color"
+        },
+        "label_hover_color": {
+          "label": "Label hover color"
+        },
+        "styling_header": {
+          "content": "Styling Settings"
+        },
+        "border_radius": {
+          "label": "Border radius"
+        },
+        "box_shadow_blur": {
+          "label": "Box shadow blur"
+        },
+        "box_shadow_spread": {
+          "label": "Box shadow spread"
+        },
+        "box_shadow_opacity": {
+          "label": "Box shadow opacity"
+        },
+        "hover_transform": {
+          "label": "Hover transform"
+        },
+        "spacing_header": {
+          "content": "Spacing Settings"
+        },
         "sub_collections": {
           "label": "Sub-collections",
           "info": "Select sub-collections to display in the navigation"
