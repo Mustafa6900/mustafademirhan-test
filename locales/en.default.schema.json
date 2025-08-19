@@ -3469,6 +3469,26 @@
       "presets": {
         "name": "FAQ Section"
       }
+    },
+    "collection_breadcrumb": {
+      "name": "Collection Breadcrumb",
+      "settings": {
+        "header": {
+          "content": "Breadcrumb Settings"
+        },
+        "show_breadcrumb": {
+          "label": "Show breadcrumb navigation"
+        },
+        "padding_top": {
+          "label": "Section padding top"
+        },
+        "padding_bottom": {
+          "label": "Section padding bottom"
+        }
+      },
+      "presets": {
+        "name": "Collection Breadcrumb"
+      }
     }
   }
 }

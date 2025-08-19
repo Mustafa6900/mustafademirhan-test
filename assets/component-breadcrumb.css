@@ -1,7 +1,12 @@
 /* Breadcrumb Navigation Component Styles */
 
+.collection-breadcrumb.section-padding {
+  padding-top: var(--section-padding-top, 16px);
+  padding-bottom: var(--section-padding-bottom, 16px);
+}
+
 .breadcrumb {
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .breadcrumb__list {

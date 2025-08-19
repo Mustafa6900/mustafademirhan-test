@@ -1,0 +1,62 @@
+{% comment %}
+  Collection Breadcrumb Section
+{% endcomment %}
+
+{{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
+
+<div class="collection-breadcrumb section-padding" style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {% render 'breadcrumb-navigation', 
+      show_breadcrumb: section.settings.show_breadcrumb,
+      collection: collection,
+      page: page,
+      page_title: page_title,
+      template: template
+    %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.collection_breadcrumb.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.collection_breadcrumb.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "t:sections.collection_breadcrumb.settings.show_breadcrumb.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.collection_breadcrumb.settings.padding_top.label",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.collection_breadcrumb.settings.padding_bottom.label",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection_breadcrumb.presets.name"
+    }
+  ]
+}
+{% endschema %} 
