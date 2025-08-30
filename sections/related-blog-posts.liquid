@@ -41,7 +41,7 @@
     {% if blog_posts == blank %}
       {% assign related_posts = '' %}
       {% assign related_posts = related_posts | split: ',' %}
-      {% for article in blogs.all.articles limit: 20 %}
+              {% for article in blogs.all.articles %}
         {% assign article_tags = article.tags | downcase %}
         {% assign collection_title = collection.title | downcase %}
         {% assign collection_handle = collection.handle | downcase %}
@@ -58,9 +58,9 @@
       {% endfor %}
       
       {% if related_posts.size == 0 %}
-        {% assign blog_posts = blogs.all.articles limit: 4 %}
+        {% assign blog_posts = blogs.all.articles | slice: 0, 4 %}
       {% else %}
-        {% assign blog_posts = related_posts limit: 4 %}
+        {% assign blog_posts = related_posts | slice: 0, 4 %}
       {% endif %}
     {% endif %}
 
