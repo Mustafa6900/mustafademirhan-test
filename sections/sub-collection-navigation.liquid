@@ -50,12 +50,18 @@
       <h1 class="sub-collection-navigation__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">{{ 'sections.sub_collection_navigation.default_title' | t }}</h1>
     {% endif %}
 
-    {% if section.settings.sub_collections != blank and section.settings.show_navigation %}
+    {% assign sub_collections = collection.metafields.custom.sub_collections.value %}
+    
+    {% if sub_collections == blank and section.settings.sub_collections != blank %}
+      {% assign sub_collections = section.settings.sub_collections %}
+    {% endif %}
+
+    {% if sub_collections != blank and section.settings.show_navigation %}
       <div class="sub-collection-navigation__container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" 
            style="--navigation-spacing: {{ section.settings.navigation_spacing }}px;">
         <div class="sub-collection-navigation__scroll-container" id="sub-collection-scroll">
           <div class="sub-collection-navigation__items">
-            {% for sub_collection in section.settings.sub_collections %}
+            {% for sub_collection in sub_collections %}
               <div class="sub-collection-navigation__item-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--animation-order: {{ forloop.index }};">
                 {% render 'sub-collection-item',
                   item_url: sub_collection.url,
@@ -79,9 +85,14 @@
         </div>
       {% endif %}
     {% else %}
-      <!-- No sub-collections selected -->
+      <!-- No sub-collections available -->
       <div class="sub-collection-navigation__empty{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <p>{{ 'sections.sub_collection_navigation.no_collections' | t }}</p>
+        {% if collection %}
+          <p class="sub-collection-navigation__help-text">
+            {{ 'sections.sub_collection_navigation.setup_metafields' | t: collection_title: collection.title }}
+          </p>
+        {% endif %}
       </div>
     {% endif %}
   </div>

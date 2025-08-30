@@ -11,12 +11,39 @@
       </li>
       
       {% if collection %}
-        <li class="breadcrumb__item">
-          <a href="{{ routes.collections_url }}" class="breadcrumb__link">{{ 'sections.header.breadcrumb_collections' | t }}</a>
-        </li>
-        <li class="breadcrumb__item">
-          <span class="breadcrumb__current">{{ collection.title }}</span>
-        </li>
+        {% assign parent_collection = collection.metafields.custom.parent_collection.value %}
+        
+        {% if parent_collection %}
+          <li class="breadcrumb__item">
+            <a href="{{ routes.collections_url }}" class="breadcrumb__link">{{ 'sections.header.breadcrumb_collections' | t }}</a>
+          </li>
+          <li class="breadcrumb__item">
+            <a href="{{ parent_collection.url }}" class="breadcrumb__link">{{ parent_collection.title }}</a>
+          </li>
+          <li class="breadcrumb__item">
+            <span class="breadcrumb__current">{{ collection.title }}</span>
+          </li>
+        {% else %}
+          <li class="breadcrumb__item">
+            <a href="{{ routes.collections_url }}" class="breadcrumb__link">{{ 'sections.header.breadcrumb_collections' | t }}</a>
+          </li>
+          <li class="breadcrumb__item">
+            <span class="breadcrumb__current">{{ collection.title }}</span>
+          </li>
+        {% endif %}
+        
+        {% comment %}
+          Check if we're on a product page within this collection
+        {% endcomment %}
+        {% if product %}
+          <li class="breadcrumb__item">
+            <a href="{{ collection.url }}" class="breadcrumb__link">{{ collection.title }}</a>
+          </li>
+          <li class="breadcrumb__item">
+            <span class="breadcrumb__current">{{ product.title }}</span>
+          </li>
+        {% endif %}
+        
       {% elsif page %}
         <li class="breadcrumb__item">
           <span class="breadcrumb__current">{{ page.title }}</span>

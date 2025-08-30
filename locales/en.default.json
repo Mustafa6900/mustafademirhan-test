@@ -356,6 +356,7 @@
     },
     "sub_collection_navigation": {
       "no_collections": "No sub-collections available",
+      "setup_metafields": "To display sub-collections, set up the 'sub_collections' metafield for {{ collection_title }} collection, or configure them in section settings.",
       "no_image": "No image available",
       "default_title": "Collection",
       "no_filter_options": "No filter options configured",
@@ -618,7 +619,8 @@
     "related_blog_posts": {
       "name": "Related Blog Posts",
       "no_image": "No image available",
-      "no_blog_posts": "No related blog posts configured for this collection",
+      "no_blog_posts": "No related blog posts available",
+      "setup_help": "To display related blog posts for {{ collection_title }}, either set up the 'related_blog_posts' metafield, or create blog posts with tags matching this collection.",
       "read_article": "Read Article",
       "settings": {
         "header": {

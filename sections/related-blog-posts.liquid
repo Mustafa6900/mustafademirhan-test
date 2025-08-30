@@ -1,7 +1,6 @@
 {% comment %}
   Related Blog Posts Section
   Displays related blog posts for collection pages
-  Uses collection metafields for dynamic content
 {% endcomment %}
 
 {{ 'component-related-blog-posts.css' | asset_url | stylesheet_tag }}
@@ -37,10 +36,37 @@
       {% endif %}
     {% endif %}
 
-    {% if collection.metafields.custom.related_blog_posts != blank %}
+    {% assign blog_posts = collection.metafields.custom.related_blog_posts.value %}
+    
+    {% if blog_posts == blank %}
+      {% assign related_posts = '' %}
+      {% assign related_posts = related_posts | split: ',' %}
+      {% for article in blogs.all.articles limit: 20 %}
+        {% assign article_tags = article.tags | downcase %}
+        {% assign collection_title = collection.title | downcase %}
+        {% assign collection_handle = collection.handle | downcase %}
+        
+        {% if article_tags contains collection_title or article_tags contains collection_handle %}
+          {% assign related_posts = related_posts | push: article %}
+        {% endif %}
+        {% assign article_title = article.title | downcase %}
+        {% if article_title contains collection_title or article_title contains collection_handle %}
+          {% unless related_posts contains article %}
+            {% assign related_posts = related_posts | push: article %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if related_posts.size == 0 %}
+        {% assign blog_posts = blogs.all.articles limit: 4 %}
+      {% else %}
+        {% assign blog_posts = related_posts limit: 4 %}
+      {% endif %}
+    {% endif %}
+
+    {% if blog_posts != blank %}
       <div class="related-blog-posts__container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <div class="related-blog-posts__grid">
-          {% assign blog_posts = collection.metafields.custom.related_blog_posts.value %}
           {% for blog_post in blog_posts %}
             <article class="related-blog-post{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--animation-order: {{ forloop.index }};">
             <div class="related-blog-post-card">
@@ -48,6 +74,15 @@
                 {% if blog_post.featured_image %}
                   <img 
                     src="{{ blog_post.featured_image | image_url: width: 400 }}"
+                    alt="{{ blog_post.title }}"
+                    loading="lazy"
+                    width="400"
+                    height="250"
+                    class="related-blog-post__image"
+                  >
+                {% elsif blog_post.image %}
+                  <img 
+                    src="{{ blog_post.image | image_url: width: 400 }}"
                     alt="{{ blog_post.title }}"
                     loading="lazy"
                     width="400"
@@ -72,6 +107,10 @@
                   <p class="related-blog-post__excerpt">
                     {{ blog_post.excerpt | strip_html | truncate: 120 }}
                   </p>
+                {% elsif blog_post.content != blank %}
+                  <p class="related-blog-post__excerpt">
+                    {{ blog_post.content | strip_html | truncate: 120 }}
+                  </p>
                 {% endif %}
                 
                 <a href="{{ blog_post.url | default: '#' }}" class="related-blog-post__read-more">
@@ -87,6 +126,11 @@
       <!-- No related blog posts configured for this collection -->
       <div class="related-blog-posts__empty{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <p>{{ 'sections.related_blog_posts.no_blog_posts' | t }}</p>
+        {% if collection %}
+          <p class="related-blog-posts__help-text">
+            {{ 'sections.related_blog_posts.setup_help' | t: collection_title: collection.title }}
+          </p>
+        {% endif %}
       </div>
     {% endif %}
   </div>
